@@ -12,18 +12,25 @@ from math import ceil
 
 import json 
 from PIL import Image
-def load_checkpoint(path='trained_modelOO7.pth'):
-    
-    checkpoint = torch.load(path)
+def load_checkpoint(path='trained_modelOO7.pth',lr=0.0001):
+    if torch.cuda.is_available():
+        map_location=lambda storage, loc: storage.cuda()
+    else:
+        map_location='cpu'
+       
+    learningr=lr
+    checkpoint = torch.load(path, map_location=map_location)
     model = models.vgg16(pretrained=True)
     model.arch = checkpoint['arch']
     model.class_to_idx = checkpoint['class_to_idx']
     model.classifier = checkpoint['classifier']
     model.load_state_dict(checkpoint['state_dict'])
     
+    optimizer=optim.Adam(model.classifier.parameters(),lr=learningr)
+    optimizer.load_state_dict(checkpoint['optimizer_dict'])
     for param in model.parameters():
         param.requires_grad = False
-        
+       
     return model
 
 def process_image(image):
