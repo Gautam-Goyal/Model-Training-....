@@ -138,7 +138,7 @@ def train_network(model,criterion,device,train_loaders,valid_loaders,epochs = 12
                       "Valid Accuracy: {:.3f}".format(accuracy/len(valid_loaders)))
     return model,optimizer
                 
-def save_checkpoint(train_datasets,model,optimizer,path='checkpoint2.pth',architect='vgg16',epochs=12,learningr = 0.001,hidden_layer=5024,drop=0.2):
+def save_checkpoint(train_datasets,model,optimizer,path='./trained_modelOO7',architect='vgg16',epochs=12,learningr = 0.001,hidden_layer=5024,drop=0.2):
     
     checkpoint={
         'lr': learningr,
