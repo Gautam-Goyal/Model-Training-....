@@ -12,7 +12,7 @@ from math import ceil
 
 import json 
 from PIL import Image
-def load_checkpoint(path='trained_modelOO7.pth',lr=0.0001):
+def load_checkpoint(path='CHECKPOINT.pth',lr=0.001):
     if torch.cuda.is_available():
         map_location=lambda storage, loc: storage.cuda()
     else:
