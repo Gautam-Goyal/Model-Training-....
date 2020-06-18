@@ -22,7 +22,7 @@ import train_save_functions
 ap = argparse.ArgumentParser(
     description='predict-file')
 ap.add_argument('input_img', default='/home/workspace/ImageClassifier/flowers/test/10/image_07090.jpg', nargs='*', action="store", type = str)
-ap.add_argument('checkpoint', default='/home/workspace/ImageClassifier/trained_modelOO7.pth', nargs='*', action="store",type = str)
+ap.add_argument('checkpoint', nargs='*', action="store",type = str)
 ap.add_argument('--top_k', default=5, dest="top_k", action="store", type=int)
 ap.add_argument('--category_names', dest="category_names", action="store", default='cat_to_name.json')
 ap.add_argument('--gpu', default="gpu", action="store", dest="gpu")
