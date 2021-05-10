@@ -16,8 +16,6 @@ import argparse
 
 import predict_load_functions
 
-#Command Line Arguments
-
 ap = argparse.ArgumentParser(
     description='predict-file')
 ap.add_argument('--input_img', default='/home/workspace/ImageClassifier/flowers/test/102/image_08004.jpg', action="store", type = str)
